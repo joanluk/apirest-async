@@ -1,0 +1,36 @@
+
+
+= Ejemplo API Rest usando CompletableFuture y peticiones non-blocking
+
+
+El objetivo es montar un servicio REST non-blocking usando CompletableFuture
+
+
+
+Una vez arrancada la aplicación si se realiza la llamada al servicio para obtener el listado de servicios:
+
+
+Usando httpie
+
+
+Usando curl:
+
+	curl -i http://localhost:8080/books
+
+
+Resultado:
+
+
+[source,java]
+----
+2018-12-15 18:54:38.311 DEBUG 81639 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/books", parameters={}
+2018-12-15 18:54:38.317 DEBUG 81639 --- [nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to public java.util.concurrent.CompletableFuture<org.springframework.http.ResponseEntity<java.util.List<org.emaginalabs.model.Book>>> org.emaginalabs.api.BookController.getBooks()
+2018-12-15 18:54:38.333 DEBUG 81639 --- [nio-8080-exec-1] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2018-12-15 18:54:38.334 DEBUG 81639 --- [nio-8080-exec-1] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /books
+2018-12-15 18:54:38.335 DEBUG 81639 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2018-12-15 18:54:38.341 DEBUG 81639 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/books", parameters={}
+2018-12-15 18:54:38.343 DEBUG 81639 --- [nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result [<200 OK OK,[org.emaginalabs.model.Book@2820de45, org.emaginalabs.model.Book@775ad852, org.emaginalab (truncated)...]
+2018-12-15 18:54:38.350 DEBUG 81639 --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2018-12-15 18:54:38.350 DEBUG 81639 --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[org.emaginalabs.model.Book@2820de45, org.emaginalabs.model.Book@775ad852, org.emaginalabs.model.Book@1fa2482a]]
+2018-12-15 18:54:38.370 DEBUG 81639 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+----

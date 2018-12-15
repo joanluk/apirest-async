@@ -26,7 +26,7 @@ public class BookController {
 
 
     @GetMapping
-    public CompletableFuture<ResponseEntity<List<Book>>> getBooks() {
+        public CompletableFuture<ResponseEntity<List<Book>>> getBooks() {
         return CompletableFuture.supplyAsync(() -> ResponseEntity.ok().body(bookService.findAll()), taskExecutor);
     }
 
