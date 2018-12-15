@@ -1,3 +1,4 @@
+image:https://travis-ci.org/joanluk/apirest-async.svg?branch=master["Build Status", link="https://travis-ci.org/joanluk/apirest-async"]
 
 
 = Ejemplo API Rest usando CompletableFuture y peticiones non-blocking
@@ -10,8 +11,9 @@ El objetivo es montar un servicio REST non-blocking usando CompletableFuture
 Una vez arrancada la aplicación si se realiza la llamada al servicio para obtener el listado de servicios:
 
 
-Usando httpie
+Usando httpie:
 
+   http -v :8080/books
 
 Usando curl:
 
